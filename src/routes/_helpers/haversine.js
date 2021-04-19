@@ -1,6 +1,6 @@
 const EARTH_RADIUS = 6371;
 
-export function distance(coord0, coord1) {
+export function calculateDistance(coord0, coord1) {
   const [lat0, lon0] = toRadArray(coord0);
   const [lat1, lon1] = toRadArray(coord1);
   const deltaLat = lat1 - lat0;

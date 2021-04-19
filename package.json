@@ -8,6 +8,8 @@
     "start": "node __sapper__/build"
   },
   "dependencies": {
+    "better-sqlite3": "*",
+    "body-parser": "*",
     "compression": "^1.7.1",
     "debug": "^4.3.1",
     "polka": "next",

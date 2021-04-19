@@ -4,7 +4,7 @@
   import ChevronRight32 from "carbon-icons-svelte/lib/ChevronRight32";
 
   import LocationInput from './LocationInput.svelte';
-  import { distance } from './_helpers/haversine';
+  import { calculateDistance } from './_helpers/haversine';
 
   let currentUrl;
   let coord0 = {};
@@ -15,8 +15,13 @@
   const { carbon_theme } = getContext("Theme");
 
   function getDistance() {
-    const d = distance([coord0['lat'], coord0['lon']], [coord1['lat'], coord1['lon']]);
-    console.log(d);
+    const distance = calculateDistance([coord0['lat'], coord0['lon']], [coord1['lat'], coord1['lon']]);
+
+    fetch('/api/distances', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ address0, address1, distance })
+    })
   }
 
   const isInputInvalid = (coord0, coord1) => (
