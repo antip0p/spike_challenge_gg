@@ -1,21 +1,23 @@
 <script>
   import { getContext } from "svelte";
-  import { Button, Row, Column, Header, HeaderNav, HeaderNavItem } from "carbon-components-svelte";
-  import ChevronRight32 from "carbon-icons-svelte/lib/ChevronRight32";
+  import { Button, Row, Column, Tile } from "carbon-components-svelte";
+  import ChevronRight32 from "carbon-icons-svelte/lib/ChevronRight24";
 
   import LocationInput from './LocationInput.svelte';
   import { calculateDistance } from './_helpers/haversine';
 
-  let currentUrl;
   let coord0 = {};
   let address0 = "";
   let coord1 = {};
   let address1 = "";
+  let distance;
+
+  $: distance = null;
 
   const { carbon_theme } = getContext("Theme");
 
   function getDistance() {
-    const distance = calculateDistance([coord0['lat'], coord0['lon']], [coord1['lat'], coord1['lon']]);
+    distance = calculateDistance([coord0['lat'], coord0['lon']], [coord1['lat'], coord1['lon']]);
 
     fetch('/api/distances', {
       method: 'POST',
@@ -28,15 +30,6 @@
      Object.keys(coord0).length == 0 || Object.keys(coord1).length == 0
   );
 </script>
-
-<Header platformName="Spike Challenge" href="/">
-  <HeaderNav>
-    <HeaderNavItem
-      href="/"
-      text="Home"
-      aria-current={currentUrl === '/' ? 'page' : undefined} />
-  </HeaderNav>
-</Header>
 
 <Row>
   <Column lg="{16}">
@@ -60,5 +53,12 @@
       iconDescription="Calcular distancia"
       disabled={isInputInvalid(coord0, coord1)}
     />
+  </Column>
+</Row>
+<Row>
+  <Column md={6}>
+    { #if distance && address0 && address1}
+      <Tile>Distancia: {distance} Km</Tile>
+    {/if}
   </Column>
 </Row>

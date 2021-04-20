@@ -1,37 +1,28 @@
 <script>
-  export let segment = undefined;
-
   import {
     SkipToContent,
     Header,
+    HeaderNav,
+    HeaderNavItem,
     HeaderUtilities,
     HeaderGlobalAction,
   } from "carbon-components-svelte";
-  import Notification20 from "carbon-icons-svelte/lib/Notification20";
-  import UserAvatar20 from "carbon-icons-svelte/lib/UserAvatar20";
-  import AppSwitcher20 from "carbon-icons-svelte/lib/AppSwitcher20";
+
+  import LogoGithub24 from "carbon-icons-svelte/lib/LogoGithub24";
   import { getContext } from "svelte";
 
   const ctx = getContext("Theme");
-
-  $: if (ctx) {
-    ctx.dark.subscribe((value) => {
-      console.log("dark mode?", value);
-    });
-    ctx.light.subscribe((value) => {
-      console.log("light mode?", value);
-    });
-    ctx.updateVar("--cds-productive-heading-06-font-size", "4rem");
-  }
 </script>
 
-<Header company="IBM" platformName="Carbon Components Svelte" href="/">
+<Header company="GG" platformName="Spike Challenge" href="/">
   <div slot="skip-to-content">
     <SkipToContent />
   </div>
+  <HeaderNav>
+    <HeaderNavItem href="/distances" text="Historial" />
+  </HeaderNav>
+
   <HeaderUtilities>
-    <HeaderGlobalAction aria-label="Notifications" icon="{Notification20}" />
-    <HeaderGlobalAction aria-label="User Avatar" icon="{UserAvatar20}" />
-    <HeaderGlobalAction aria-label="App Switcher" icon="{AppSwitcher20}" />
+    <HeaderGlobalAction aria-label="User Avatar" icon="{LogoGithub24}" />
   </HeaderUtilities>
 </Header>

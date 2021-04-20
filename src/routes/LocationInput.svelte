@@ -13,7 +13,9 @@
   const lookup = (event) => {
     if (event.repeat || event.key === 'Enter') return;
 
-    promise = geoLookup(event.target.value + event.key);
+    setTimeout(() => {
+      promise = geoLookup(value);
+    }, 0);
   }
 
   const setValue = (event) => {

@@ -17,7 +17,7 @@ export default class Db {
 
   static getDistanceRecords() {
     try {
-      return db.prepare("SELECT address0, address1, distance FROM distances").all();
+      return db.prepare("SELECT id, address0, address1, distance FROM distances").all();
     } catch (err) {
       console.log("Couldn't retrieve data from 'distances' table.");
     }

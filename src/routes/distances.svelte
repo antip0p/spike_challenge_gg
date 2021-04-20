@@ -13,8 +13,8 @@
 
 <DataTable
   headers={[
-    { key: 'address0', value: 'Punto A' },
-    { key: 'address1', value: 'Punto B' },
+    { key: 'address0', value: 'Origen' },
+    { key: 'address1', value: 'Destino' },
     { key: 'distance', value: 'Distancia' }
   ]}
   rows={distanceRows}
