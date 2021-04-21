@@ -3,7 +3,7 @@
   import { Button, Row, Column, Tile } from "carbon-components-svelte";
   import ChevronRight32 from "carbon-icons-svelte/lib/ChevronRight24";
 
-  import LocationInput from './LocationInput.svelte';
+  import LocationInput from '../components/LocationInput.svelte';
   import { calculateDistance } from './_helpers/haversine';
 
   let coord0 = {};
@@ -33,7 +33,16 @@
 
 <Row>
   <Column lg="{16}">
-    <h2 style="margin-bottom: 1.5rem">Calcular distancia</h2>
+    <h2>Distancia mínima</h2>
+  </Column>
+</Row>
+
+<Row>
+  <Column md={3}>
+    <h5>Origen</h5>
+  </Column>
+  <Column md={3}>
+    <h5>Destino</h5>
   </Column>
 </Row>
 
@@ -58,7 +67,17 @@
 <Row>
   <Column md={6}>
     { #if distance && address0 && address1}
-      <Tile>Distancia: {distance} Km</Tile>
+      <Tile>Distancia: {distance} km</Tile>
     {/if}
   </Column>
 </Row>
+
+<style>
+  h2 {
+    margin-bottom: 1.5rem;
+  }
+
+  h5 {
+    margin-bottom: 1rem;
+  }
+</style>

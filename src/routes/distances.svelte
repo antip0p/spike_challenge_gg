@@ -15,7 +15,7 @@
   headers={[
     { key: 'address0', value: 'Origen' },
     { key: 'address1', value: 'Destino' },
-    { key: 'distance', value: 'Distancia' }
+    { key: 'distance', value: 'Distancia [km]' }
   ]}
   rows={distanceRows}
 />

@@ -1,7 +1,7 @@
 <script>
   import { ClickableTile, InlineLoading, Search} from "carbon-components-svelte";
 
-  const NOMINATIM_URL = 'http://localhost:8010/proxy';
+  const NOMINATIM_URL = 'https://nominatim.openstreetmap.org';
 
   export let value = "";
   export let coord = {};
@@ -33,7 +33,12 @@
 	}
 </script>
 
-<Search bind:value on:keydown={lookup} on:clear={clearSuggestions}  />
+<Search
+  bind:value
+  on:keydown={lookup}
+  on:clear={clearSuggestions}
+  placeholder="Buscar dirección..."
+/>
 
 {#await promise}
   <InlineLoading />
